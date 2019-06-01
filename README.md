@@ -8,5 +8,5 @@ Oracle is a Dota 2 replay parser written in C#, .Net Core 2.2 targeting the Sour
 
 ## License
 
-Oracle is distributed under the [MIT license]()
+Oracle is distributed under the [MIT license](https://github.com/AeddGinvael/OracleReplay.Parser/blob/master/LICENSE)
 

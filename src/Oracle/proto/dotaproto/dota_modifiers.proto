@@ -1,0 +1,56 @@
+syntax = "proto3";
+package google.protobuf;
+option csharp_namespace = "Proto.Dota";
+
+import "networkbasetypes.proto";
+
+option optimize_for = SPEED;
+option cc_generic_services = false;
+
+enum DOTA_MODIFIER_ENTRY_TYPE {
+	DOTA_MODIFIER_UKNOWN = 0;
+	DOTA_MODIFIER_ENTRY_TYPE_ACTIVE = 1;
+	DOTA_MODIFIER_ENTRY_TYPE_REMOVED = 2;
+}
+
+message CDOTAModifierBuffTableEntry {
+	  DOTA_MODIFIER_ENTRY_TYPE entry_type = 1 ;
+	  int32 parent = 2;
+	  int32 index = 3;
+	  int32 serial_num = 4;
+	  int32 modifier_class = 5;
+	  int32 ability_level = 6;
+	  int32 stack_count = 7;
+	  float creation_time = 8;
+	  float duration = 9 ;
+	  int32 caster = 10;
+	  int32 ability = 11;
+	  int32 armor = 12;
+	  float fade_time = 13;
+	  bool subtle = 14;
+	  float channel_time = 15;
+	  CMsgVector v_start = 16;
+	  CMsgVector v_end = 17;
+	  string portal_loop_appear = 18;
+	  string portal_loop_disappear = 19;
+	  string hero_loop_appear = 20;
+	  string hero_loop_disappear = 21;
+	  int32 movement_speed = 22;
+	  bool aura = 23;
+	  int32 activity = 24;
+	  int32 damage = 25;
+	  int32 range = 26;
+	  int32 dd_modifier_index = 27;
+	  int32 dd_ability_id = 28;
+	  string illusion_label = 29;
+	  bool active = 30;
+	  string player_ids = 31;
+	  string lua_name = 32;
+	  int32 attack_speed = 33;
+}
+
+message CDOTALuaModifierEntry {
+	  int32 modifier_type = 1;
+	  string modifier_filename = 2;
+}
+

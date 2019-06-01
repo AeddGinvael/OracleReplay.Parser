@@ -1,0 +1,135 @@
+syntax = "proto3";
+package google.protobuf;
+option csharp_namespace = "Proto.Dota";
+
+import "netmessages.proto";
+
+option cc_generic_services = false;
+
+enum CLC_Messages {
+	cls_UKNOWN = 0;
+	clc_ClientInfo = 20;
+	clc_Move = 21;
+	clc_VoiceData = 22;
+	clc_BaselineAck = 23;
+	clc_ListenEvents = 24;
+	clc_RespondCvarValue = 25;
+	clc_FileCRCCheck = 26;
+	clc_LoadingProgress = 27;
+	clc_SplitPlayerConnect = 28;
+	clc_ClientMessage = 29;
+	clc_SplitPlayerDisconnect = 30;
+	clc_ServerStatus = 31;
+	clc_ServerPing = 32;
+	clc_RequestPause = 33;
+	clc_CmdKeyValues = 34;
+}
+
+enum SVC_Messages {
+	svc_UKNOWN = 0;
+	svc_ServerInfo = 40;
+	svc_FlattenedSerializer = 41;
+	svc_ClassInfo = 42;
+	svc_SetPause = 43;
+	svc_CreateStringTable = 44;
+	svc_UpdateStringTable = 45;
+	svc_VoiceInit = 46;
+	svc_VoiceData = 47;
+	svc_Print = 48;
+	svc_Sounds = 49;
+	svc_SetView = 50;
+	svc_ClearAllStringTables = 51;
+	svc_CmdKeyValues = 52;
+	svc_BSPDecal = 53;
+	svc_SplitScreen = 54;
+	svc_PacketEntities = 55;
+	svc_Prefetch = 56;
+	svc_Menu = 57;
+	svc_GetCvarValue = 58;
+	svc_StopSound = 59;
+	svc_PeerList = 60;
+	svc_PacketReliable = 61;
+	svc_HLTVStatus = 62;
+	svc_ServerSteamID = 63;
+	svc_FullFrameSplit = 70;
+}
+
+message CSVCMsg_CreateStringTable {
+	  string name = 1;
+	  int32 num_entries = 2;
+	  bool user_data_fixed_size = 3;
+	  int32 user_data_size = 4;
+	  int32 user_data_size_bits = 5;
+	  int32 flags = 6;
+	  bytes string_data = 7;
+	  int32 uncompressed_size = 8;
+	  bool data_compressed = 9;
+}
+
+message CSVCMsg_VoiceData {
+	  CMsgVoiceAudio audio = 1;
+	  int32 client = 2;
+	  bool proximity = 3;
+	  fixed64 xuid = 4;
+	  int32 audible_mask = 5;
+	  uint32 tick = 6;
+}
+
+message CSVCMsg_ClearAllStringTables {
+	  string mapname = 1;
+	  uint32 map_crc = 2;
+}
+
+message ProtoFlattenedSerializerField_t {
+	  int32 var_type_sym = 1;
+	  int32 var_name_sym = 2;
+	  int32 bit_count = 3;
+	  float low_value = 4;
+	  float high_value = 5;
+	  int32 encode_flags = 6;
+	  int32 field_serializer_name_sym = 7;
+	  int32 field_serializer_version = 8;
+	  int32 send_node_sym = 9;
+	  int32 var_encoder_sym = 10;
+}
+
+message ProtoFlattenedSerializer_t {
+	  int32 serializer_name_sym = 1;
+	  int32 serializer_version = 2;
+	repeated int32 fields_index = 3;
+}
+
+message CSVCMsg_FlattenedSerializer {
+	repeated ProtoFlattenedSerializer_t serializers = 1;
+	repeated string symbols = 2;
+	repeated ProtoFlattenedSerializerField_t fields = 3;
+}
+
+message CMsgIPCAddress {
+	  fixed64 computer_guid = 1;
+	  uint32 process_id = 2;
+}
+
+message CMsgServerPeer {
+	  int32 player_slot = 1;
+	  fixed64 steamid = 2;
+	  CMsgIPCAddress ipc = 3;
+	  bool they_hear_you = 4;
+	  bool you_hear_them = 5;
+	  bool is_listenserver_host = 6;
+}
+
+message CSVCMsg_PeerList {
+	repeated CMsgServerPeer peer = 1;
+}
+
+message CSVCMsg_HLTVStatus {
+	  string master = 1;
+	  int32 clients = 2;
+	  int32 slots = 3;
+	  int32 proxies = 4;
+}
+
+message CSVCMsg_ServerSteamID {
+	  uint64 steam_id = 1;
+}

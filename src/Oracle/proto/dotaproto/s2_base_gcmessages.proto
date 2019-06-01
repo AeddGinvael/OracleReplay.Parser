@@ -1,0 +1,36 @@
+syntax = "proto3";
+package google.protobuf;
+option csharp_namespace = "Proto.Dota";
+
+option optimize_for = SPEED;
+option cc_generic_services = false;
+
+message CSOEconItemAttribute {
+      uint32 def_index = 1;
+      uint32 value = 2;
+      bytes value_bytes = 3;
+}
+
+message CSOEconItemEquipped {
+      uint32 new_class = 1;
+      uint32 new_slot = 2;
+}
+
+message CSOEconItem {
+      uint64 id = 1;
+      uint32 account_id = 2;
+      uint32 inventory = 3;
+      uint32 def_index = 4;
+      uint32 quantity = 5 ;
+      uint32 level = 6 ;
+      uint32 quality = 7 ;
+      uint32 flags = 8 ;
+      uint32 origin = 9 ;
+    repeated CSOEconItemAttribute attribute = 12;
+      CSOEconItem interior_item = 13;
+      bool in_use = 14 ;
+      uint32 style = 15 ;
+      uint64 original_id = 16 ;
+    repeated CSOEconItemEquipped equipped_state = 18;
+}
+

@@ -1,0 +1,276 @@
+syntax = "proto3";
+package google.protobuf;
+option csharp_namespace = "Proto.Dota";
+
+import "networkbasetypes.proto";
+
+option optimize_for = SPEED;
+option cc_generic_services = false;
+
+enum ETEProtobufIds {
+	TE_UKNOWN = 0;
+	TE_EffectDispatchId = 400;
+	TE_ArmorRicochetId = 401;
+	TE_BeamEntPointId = 402;
+	TE_BeamEntsId = 403;
+	TE_BeamPointsId = 404;
+	TE_BeamRingId = 405;
+	TE_BreakModelId = 406;
+	TE_BSPDecalId = 407;
+	TE_BubblesId = 408;
+	TE_BubbleTrailId = 409;
+	TE_DecalId = 410;
+	TE_WorldDecalId = 411;
+	TE_EnergySplashId = 412;
+	TE_FizzId = 413;
+	TE_ShatterSurfaceId = 414;
+	TE_GlowSpriteId = 415;
+	TE_ImpactId = 416;
+	TE_MuzzleFlashId = 417;
+	TE_BloodStreamId = 418;
+	TE_ExplosionId = 419;
+	TE_DustId = 420;
+	TE_LargeFunnelId = 421;
+	TE_SparksId = 422;
+	TE_PhysicsPropId = 423;
+	TE_PlayerDecalId = 424;
+	TE_ProjectedDecalId = 425;
+	TE_SmokeId = 426;
+}
+
+message CMsgTEArmorRicochet {
+	  CMsgVector pos = 1;
+	  CMsgVector dir = 2;
+}
+
+message CMsgTEBaseBeam {
+	  fixed64 modelindex = 1;
+	  fixed64 haloindex = 2;
+	  uint32 startframe = 3;
+	  uint32 framerate = 4;
+	  float life = 5;
+	  float width = 6;
+	  float endwidth = 7;
+	  uint32 fadelength = 8;
+	  float amplitude = 9;
+	  fixed32 color = 10;
+	  uint32 speed = 11;
+	  uint32 flags = 12;
+}
+
+message CMsgTEBeamEntPoint {
+	  CMsgTEBaseBeam base = 1;
+	  uint32 startentity = 2;
+	  uint32 endentity = 3;
+	  CMsgVector start = 4;
+	  CMsgVector end = 5;
+}
+
+message CMsgTEBeamEnts {
+	  CMsgTEBaseBeam base = 1;
+	  uint32 startentity = 2;
+	  uint32 endentity = 3;
+}
+
+message CMsgTEBeamPoints {
+	  CMsgTEBaseBeam base = 1;
+	  CMsgVector start = 2;
+	  CMsgVector end = 3;
+}
+
+message CMsgTEBeamRing {
+	  CMsgTEBaseBeam base = 1;
+	  uint32 startentity = 2;
+	  uint32 endentity = 3;
+}
+
+message CMsgTEBreakModel {
+	  CMsgVector origin = 1;
+	  CMsgQAngle angles = 2;
+	  CMsgVector size = 3;
+	  CMsgVector velocity = 4;
+	  uint32 randomization = 5;
+	  fixed64 modelindex = 6;
+	  uint32 count = 7;
+	  float time = 8;
+	  uint32 flags = 9;
+}
+
+message CMsgTEBSPDecal {
+	  CMsgVector origin = 1;
+	  CMsgVector normal = 2;
+	  CMsgVector saxis = 3;
+	  uint32 entity = 4;
+	  uint32 index = 5;
+}
+
+message CMsgTEBubbles {
+	  CMsgVector mins = 1;
+	  CMsgVector maxs = 2;
+	  float height = 3;
+	  uint32 count = 4;
+	  float speed = 5;
+}
+
+message CMsgTEBubbleTrail {
+	  CMsgVector mins = 1;
+	  CMsgVector maxs = 2;
+	  float waterz = 3;
+	  uint32 count = 4;
+	  float speed = 5;
+}
+
+message CMsgTEDecal {
+	  CMsgVector origin = 1;
+	  CMsgVector start = 2;
+	  uint32 entity = 3;
+	  uint32 hitbox = 4;
+	  uint32 index = 5;
+}
+
+message CMsgEffectData {
+	  CMsgVector origin = 1;
+	  CMsgVector start = 2;
+	  CMsgVector normal = 3;
+	  CMsgQAngle angles = 4;
+	  fixed32 entity = 5;
+	  fixed32 otherentity = 6;
+	  float scale = 7;
+	  float magnitude = 8;
+	  float radius = 9;
+	  fixed32 surfaceprop = 10;
+	  fixed64 effectindex = 11;
+	  uint32 damagetype = 12;
+	  uint32 material = 13;
+	  uint32 hitbox = 14;
+	  uint32 color = 15;
+	  uint32 flags = 16;
+	  int32 attachmentindex = 17;
+	  uint32 effectname = 18;
+	  uint32 attachmentname = 19;
+}
+
+message CMsgTEEffectDispatch {
+	  CMsgEffectData effectdata = 1;
+}
+
+message CMsgTEEnergySplash {
+	  CMsgVector pos = 1;
+	  CMsgVector dir = 2;
+	  bool explosive = 3;
+}
+
+message CMsgTEFizz {
+	  uint32 entity = 1;
+	  uint32 density = 2;
+	  int32 current = 3;
+}
+
+message CMsgTEShatterSurface {
+	  CMsgVector origin = 1;
+	  CMsgQAngle angles = 2;
+	  CMsgVector force = 3;
+	  CMsgVector forcepos = 4;
+	  float width = 5;
+	  float height = 6;
+	  float shardsize = 7;
+	  uint32 surfacetype = 8;
+	  fixed32 frontcolor = 9;
+	  fixed32 backcolor = 10;
+}
+
+message CMsgTEGlowSprite {
+	  CMsgVector origin = 1;
+	  float scale = 2;
+	  float life = 3;
+	  uint32 brightness = 4;
+}
+
+message CMsgTEImpact {
+	  CMsgVector origin = 1;
+	  CMsgVector normal = 2;
+	  uint32 type = 3;
+}
+
+message CMsgTEMuzzleFlash {
+	  CMsgVector origin = 1;
+	  CMsgQAngle angles = 2;
+	  float scale = 3;
+	  uint32 type = 4;
+}
+
+message CMsgTEBloodStream {
+	  CMsgVector origin = 1;
+	  CMsgVector direction = 2;
+	  fixed32 color = 3;
+	  uint32 amount = 4;
+}
+
+message CMsgTEExplosion {
+	  CMsgVector origin = 1;
+	  uint32 framerate = 2;
+	  uint32 flags = 3;
+	  CMsgVector normal = 4;
+	  uint32 materialtype = 5;
+	  uint32 radius = 6;
+	  uint32 magnitude = 7;
+	  float scale = 8;
+	  bool affect_ragdolls = 9;
+}
+
+message CMsgTEDust {
+	  CMsgVector origin = 1;
+	  float size = 2;
+	  float speed = 3;
+	  CMsgVector direction = 4;
+}
+
+message CMsgTELargeFunnel {
+	  CMsgVector origin = 1;
+	  uint32 reversed = 2;
+}
+
+message CMsgTESparks {
+	  CMsgVector origin = 1;
+	  uint32 magnitude = 2;
+	  uint32 length = 3;
+	  CMsgVector direction = 4;
+}
+
+message CMsgTEPhysicsProp {
+	  CMsgVector origin = 1;
+	  CMsgVector velocity = 2;
+	  CMsgQAngle angles = 3;
+	  fixed32 skin = 4;
+	  uint32 flags = 5;
+	  uint32 effects = 6;
+	  fixed32 color = 7;
+	  fixed64 modelindex = 8;
+	  uint32 breakmodelsnottomake = 9;
+	  float scale = 10;
+}
+
+message CMsgTEPlayerDecal {
+	  CMsgVector origin = 1;
+	  uint32 player = 2;
+	  uint32 entity = 3;
+}
+
+message CMsgTEProjectedDecal {
+	  CMsgVector origin = 1;
+	  CMsgQAngle angles = 2;
+	  uint32 index = 3;
+	  float distance = 4;
+}
+
+message CMsgTESmoke {
+	  CMsgVector origin = 1;
+	  float scale = 2;
+}
+
+message CMsgTEWorldDecal {
+	  CMsgVector origin = 1;
+	  CMsgVector normal = 2;
+	  uint32 index = 3;
+}
+

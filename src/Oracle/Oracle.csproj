@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>C# library for the processing dota 2 replays</Description>
+    <PackageId>OracleReplay.Parser</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Aeddginvael</Authors>
+    <PackageTags>Dota Replay Dem</PackageTags>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.7.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Snappy.NET" Version="1.1.1.8" />
+  </ItemGroup>
+
+</Project>
