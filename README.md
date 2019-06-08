@@ -8,10 +8,10 @@ or
 `Install-Package OracleReplay.Parser -Version 0.1.1`
 
 ## Features
-Parse combat logs;
-Parse chat events (chat wheel and messages);
-Parse location ping;
-Parse result of the match;
+Parse combat logs;  
+Parse chat events (chat wheel and messages);  
+Parse location ping;  
+Parse result of the match;  
 
 ## Example Code
 You can see example here: [example](https://github.com/AeddGinvael/OracleReplay.Parser/blob/master/src/Examples/Parser.cs)
