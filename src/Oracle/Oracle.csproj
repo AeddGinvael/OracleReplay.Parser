@@ -9,10 +9,12 @@
   <PropertyGroup>
     <Description>C# library for the processing dota 2 replays</Description>
     <PackageId>OracleReplay.Parser</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Aeddginvael</Authors>
     <PackageTags>Dota Replay Dem</PackageTags>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+	<PackageProjectUrl>https://github.com/AeddGinvael/OracleReplay.Parser</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

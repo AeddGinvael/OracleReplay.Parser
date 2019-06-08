@@ -156,7 +156,7 @@ namespace Oracle.Packets
                 var dataLength = stream.ReadProtobufVarInt();
                 var packetData = stream.ReadBytes(dataLength);
 
-                var message = PacketParserType.GetParserByPacketType((int) kind).ParseFrom(packetData);
+                var message = PacketParserType.GetParserByPacketType((int) kind)?.ParseFrom(packetData);
 
                 ProcessMessage(message);
             }

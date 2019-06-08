@@ -55,21 +55,6 @@ namespace Oracle.BitStream
 			Position = 0;
 		}
 
-		public void Seek(int pos, SeekOrigin origin)
-		{
-			if (RemainingInCurrentChunk >= 0)
-				throw new NotSupportedException("Can't seek while inside a chunk");
-
-			if (origin == SeekOrigin.Begin)
-				Position = pos;
-
-			if (origin == SeekOrigin.Current)
-				Position += pos;
-
-			if (origin == SeekOrigin.End)
-				Position = array.Count - pos;
-		}
-
 		public uint ReadInt(int numBits)
 		{
 			uint result = PeekInt(numBits);
@@ -92,21 +77,11 @@ namespace Oracle.BitStream
 			return (int)((Data[Position >> 6] >> (Position & 63)) & 1L) != 0;
 		}
 
-		public bool IsRemaining()
-		{
-			return Length - Position != 0;
-		}
-
-		public long Remains()
-		{
-			return Length - Position;
-		}
-
-		public uint PeekInt(int numBits)
+		private uint PeekInt(int numBits)
 		{
 			uint result = 0;
 			int intPos = 0;
-
+			
 			for (int i = 0; i < numBits; i++) {
 				result |= ( ( array[i + Position] ? 1u : 0u ) << intPos++ );
 			}

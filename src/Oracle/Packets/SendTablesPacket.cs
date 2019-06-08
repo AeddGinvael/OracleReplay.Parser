@@ -147,7 +147,8 @@ namespace Oracle.Packets
                     protoSerializer.SerializerVersion);
 
                 var serializer = new Serializer(sid, currentFields.ToArray());
-                serializers.Add(sid, serializer);
+                if (!serializers.ContainsKey(sid))
+                    serializers.Add(sid, serializer);
             }
 
             foreach (var serializer in serializers.Values)

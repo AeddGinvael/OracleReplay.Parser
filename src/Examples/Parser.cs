@@ -80,7 +80,7 @@ namespace Examples
 
         private void FileInfoParsed(Args<object> args)
         {
-            Console.WriteLine(args);
+            Console.WriteLine(args.Item);
         }
 
         public void HeaderParse(Args<object> args)
